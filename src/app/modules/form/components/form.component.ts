@@ -5,7 +5,9 @@ import { Barber, Booked, Services } from '../../../interfaces/api.interface';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { TimeService } from '../../../services/time.service';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -82,7 +84,9 @@ export class FormComponent {
     combineLatest([
           this.bookingForm.get('apponintmentBarber')!.valueChanges,
           this.bookingForm.get('apponintmentDate')!.valueChanges,
-    ]).subscribe(([{barbers}, {selectedDate}]) => {
+    ])
+    .pipe(untilDestroyed(this))
+    .subscribe(([{barbers}, {selectedDate}]) => {
       this.content.servicesTime.errorMsg = (barbers.workHours, selectedDate).length > 1
         ? this.content.servicesTime.errorMsgSecondary
         : this.content.servicesTime.errorMsg;
@@ -99,21 +103,25 @@ export class FormComponent {
   }
 
   getPrice() {
-    this.bookingForm.get('apponintmentService')!.valueChanges.subscribe(({services}) => {
-      this.bookingForm.get('servicePrice')?.setValue(services.price);
-    })
+    this.bookingForm.get('apponintmentService')!.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe(({services}) => {
+        this.bookingForm.get('servicePrice')?.setValue(services.price);
+      })
   }
 
   setBooking() {
-    this.bookingForm.valueChanges.subscribe(({apponintmentDate, apponintmentTime, apponintmentService, apponintmentBarber}) => {
-      if(this.bookingForm.valid) {
-        if(apponintmentDate && apponintmentTime) {
-          this.bookedAppointment.startDate = Number(this.toTimestamp(apponintmentDate.selectedDate, apponintmentTime.time));
+    this.bookingForm.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe(({apponintmentDate, apponintmentTime, apponintmentService, apponintmentBarber}) => {
+        if(this.bookingForm.valid) {
+          if(apponintmentDate && apponintmentTime) {
+            this.bookedAppointment.startDate = Number(this.toTimestamp(apponintmentDate.selectedDate, apponintmentTime.time));
+          }
+          this.bookedAppointment.barberId = apponintmentBarber?.barbers.id
+          this.bookedAppointment.serviceId = apponintmentService?.services.id
         }
-        this.bookedAppointment.barberId = apponintmentBarber?.barbers.id
-        this.bookedAppointment.serviceId = apponintmentService?.services.id
-      }
-   })
+    })
   }
 
   toTimestamp(getDate: string, getTime: string) {
@@ -123,6 +131,7 @@ export class FormComponent {
   onSubmit() {
     if(this.bookingForm.valid) {
       this.api.postAppointment(this.bookedAppointment)
+        .pipe(untilDestroyed(this))
         .subscribe(a => {
           this.router.navigate(['success'])
         });

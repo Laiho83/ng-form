@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ApiService } from 'src/app/services/api.service';
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-success',
   templateUrl: './success.component.html',
@@ -16,9 +17,10 @@ export class SuccessComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.api.getGiphy().subscribe((gliphy: {[key: string]: []}[]) => {
-      this.imgSrc = String(gliphy[(this.randomGipfy(1, gliphy.length))]);
-
+    this.api.getGiphy()
+      .pipe(untilDestroyed(this))
+      .subscribe((gliphy: {[key: string]: []}[]) => {
+        this.imgSrc = String(gliphy[(this.randomGipfy(1, gliphy.length))]);
     });
   }
 

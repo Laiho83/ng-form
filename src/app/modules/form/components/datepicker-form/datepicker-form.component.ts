@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, forwardRef, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subscription } from 'rxjs';
 import { ProfileFormValues } from './datepicker-form.interface';
 
+@UntilDestroy()
 @Component({
   selector: 'app-datepicker-form',
   templateUrl: './datepicker-form.component.html',
@@ -48,10 +50,12 @@ export class DatepickerFormComponent implements ControlValueAccessor, OnDestroy 
 
     this.subscription
       .push(
-        this.form.valueChanges.subscribe((value: any) => {
-          this.onChange(value);
-          this.onTouched();
-        })
+        this.form.valueChanges
+          .pipe(untilDestroyed(this))
+          .subscribe((value: any) => {
+            this.onChange(value);
+            this.onTouched();
+          })
     );
   }
 
