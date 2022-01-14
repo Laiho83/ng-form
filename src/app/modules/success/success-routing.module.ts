@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SuccessComponent } from './success.component';
+import { SuccessComponent } from './components/success.component';
 
 const routes: Routes = [
   {
