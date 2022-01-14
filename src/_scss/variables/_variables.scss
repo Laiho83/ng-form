@@ -1,0 +1,44 @@
+// -- VARIABLES -- //
+
+// ** COLORS
+$black-color: #000000;
+$white-color: #ffffff;
+
+// Main colors
+$primary-color: #1e2841;
+$secondary-color: #f0996e;
+$tertiary-color: #fbf4eb;
+$quaternary-color: #1e2643;
+
+// Text colors
+$text-color: #27231e;
+$heading-color: #2c2721;
+$input-text: #606060;
+$link-color: $primary-color;
+$placeholder-color: #6b6b6b;
+$err-color: #9d2e37;
+
+
+// ** SPACING
+$grid-gutter: 25px;
+
+// ** TYPOGRAPHY
+// -- font family
+$font-family-primary: 'RobotoSlab', sans-serif;
+$font-family-secondary: 'SquadaOne', sans-serif;
+
+// -- base font
+$em-base: 17px;
+$base-line-height: 1.4em;
+
+// -- headings
+$h1-size: 58px;
+$h1-line: 1.4em;
+$h2-size: 37px;
+$h2-line: 1.4em;
+
+// **BASIC WIDTHS
+$mg-width: 1024px;
+$lg-width: 992px;
+$md-width: 768px;
+$sm-width: 375px;

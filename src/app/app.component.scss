@@ -1,0 +1,23 @@
+@import 'variables/_variables.scss';
+@import 'helpers/_breakpoints.scss';
+
+.app {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: $grid-gutter;
+  background: $tertiary-color;
+}
+
+// ----------------- //
+// -- BREAKPOINTS -- //
+// ----------------- //
+// 375PX
+@include breakpoint-md {
+  .app {
+    padding: $grid-gutter*2 $grid-gutter;
+  }
+}

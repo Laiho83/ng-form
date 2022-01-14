@@ -1,0 +1,162 @@
+// -- FORMS -- //
+
+// ** INPUTS
+select,
+input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: $grid-gutter / 2;
+  padding: 0 10px;
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 500;
+  color: $input-text;
+  letter-spacing: 0.6px;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  line-height: 1.4em;
+  -webkit-appearance: none;
+  &::placeholder {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 500;
+    color: $placeholder-color;
+    letter-spacing: 0.6px;
+    opacity: 1;
+  }
+  &:focus,
+  &:focus:hover {
+    outline: 0;
+  }
+  &:disabled {
+    cursor: no-drop;
+    background: lighten($tertiary-color, 10%);
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px $white-color inset;
+  }
+}
+
+// Select
+select {
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+  background-color: $white-color;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+// Date
+.date-wrapper {
+  position: relative;
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 50%);
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 500;
+    color: $placeholder-color;
+    letter-spacing: 0.6px;
+    opacity: 1;
+  }
+  input[type=date].ng-invalid {
+    color: transparent;
+  }
+
+  input[type=date].ng-valid ~ label {
+    color: transparent;
+  }
+}
+
+
+// Types button, reset, submit
+button {
+  outline: 0;
+  &:focus,
+  &:focus:hover {
+    outline: 0;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgb(194, 194, 194);
+  }
+}
+
+.btn {
+  display: block;
+  padding: 12px 25px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  color: $white-color;
+  background: $secondary-color;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  &:hover,
+  &.selected {
+    color: $white-color;
+    background-color: darken($secondary-color, 10%);
+  }
+
+  &:disabled {
+    color: $white-color;
+  background: $secondary-color;
+  }
+}
+
+// Error Message
+.error {
+  padding: 0 2px;
+  font-family: $font-family-primary;
+  font-size: 12px;
+  font-weight: 500;
+  color: $err-color;
+  letter-spacing: 0.6px;
+  text-align: left;
+  opacity: 1;
+  transform: translateY(-($grid-gutter / 2));
+}
+
+// Grid
+.col-2 {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 100%;
+  .input-wrapper {
+    flex: 1 1 100%;
+    margin-bottom: $grid-gutter / 2;
+  }
+}
+
+.group-wrapper {
+  width: 100%;
+  margin-bottom: $grid-gutter * .7;
+  .error {
+    margin-top: -$grid-gutter * 0.5;
+  }
+}
+
+// ----------------- //
+// -- BREAKPOINTS -- //
+// ----------------- //
+// 375PX
+@include breakpoint-md {
+  .col-2 {
+    .input-wrapper {
+      flex: 0 0 48%;
+    }
+  }
+}

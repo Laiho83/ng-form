@@ -1,0 +1,12 @@
+// ** MIXINS **//
+
+ @mixin font-face($name, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    // sass-lint:disable no-duplicate-properties, indentation
+    font-family: $name;
+    src: url('#{$file-path}.ttf') format('truetype');
+    font-weight: $weight;
+    font-display: swap;
+    font-style: $style;
+  }
+}

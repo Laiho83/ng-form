@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+  <select class="generic-select" [formControlName]="searchControl">
+    <option [ngValue]="null" [disabled]="true" > {{ placeholder }} </option>
+    {{options}}
+    <option *ngFor="let option of options" [ngValue]="option">
+      <ng-container *ngIf="optionsDisplay">
+        <span *ngFor="let opt of optionsDisplay">
+          {{ option[opt] }}
+        </span>
+      </ng-container>
+      <ng-container *ngIf="!optionsDisplay">
+        {{ option }}
+      </ng-container>
+     </option>
+  </select>
+  <div class="error" *ngIf="myForm[searchControl].touched && myForm[searchControl].errors?.['required']">
+    {{ errorMsg }}
+  </div>
+</div>

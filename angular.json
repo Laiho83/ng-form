@@ -33,6 +33,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/_scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -103,9 +108,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ng-form"
+  "defaultProject": "ng-form",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

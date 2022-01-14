@@ -1,0 +1,39 @@
+<div [formGroup]="form" class="">
+  <div formGroupName="fullName" class="group-wrapper">
+    <div class="col-2">
+      <div class="input-wrapper">
+        <input formControlName="firstName" type="text" id="first-name" placeholder="First Name" />
+      </div>
+      <div class="input-wrapper">
+        <input formControlName="lastName" type="text" id="last-name" placeholder="Last Name" />
+      </div>
+    </div>
+
+    <div *ngIf="
+     (myForm['fullName'].get('lastName')?.touched && myForm['fullName'].get('lastName')?.errors) ||
+     (myForm['fullName'].get('firstName')?.touched && myForm['fullName'].get('firstName')?.errors)" class="error">
+      Please enter your full name
+    </div>
+  </div>
+  <div class="col-2">
+  <div class="input-wrapper">
+    <input formControlName="email" type="email" id="email" placeholder="Email" />
+    <div *ngIf="
+      (myForm['email'].touched && myForm['email'].errors?.['required']) ||
+      (myForm['email'].touched && myForm['email'].errors?.['pattern'])
+    " class="error">
+      Please enter valid email
+    </div>
+  </div>
+
+    <div class="input-wrapper">
+      <input formControlName="phone" type="tel" id="phone" placeholder="Contact Number" />
+      <div *ngIf="
+        (myForm['phone'].touched && myForm['phone'].errors?.['required']) ||
+        (myForm['phone'].touched && myForm['phone'].errors?.['pattern'])
+        " class="error">
+        Pleae enter phone number
+      </div>
+    </div>
+  </div>
+</div>

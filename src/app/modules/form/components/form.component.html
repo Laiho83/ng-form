@@ -1,0 +1,50 @@
+<h2 class="form-title">{{ content.title }}</h2>
+
+<ng-container>
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+    <app-profile-form formControlName="profile"></app-profile-form>
+
+    <div class="col-2">
+      <app-generic-select
+      *ngIf="getBarbers$ | async as getBarbers"
+      formControlName="apponintmentBarber"
+      [options] = "getBarbers"
+      [placeholder] = "content.barbersSelect.placeholder"
+      [errorMsg] = "content.barbersSelect.errorMsg"
+      [searchControl] = "content.barbersSelect.searchControl"
+      [optionsDisplay] = "content.barbersSelect.optionsDisplay"
+      class="input-wrapper"
+      ></app-generic-select>
+
+      <app-generic-select
+       *ngIf="getServices$ | async as getServices"
+        formControlName="apponintmentService"
+        [options] = "getServices"
+        [placeholder] = "content.servicesSelect.placeholder"
+        [errorMsg] = "content.servicesSelect.errorMsg"
+        [searchControl] = "content.servicesSelect.searchControl"
+        [optionsDisplay] = "content.servicesSelect.optionsDisplay"
+        class="input-wrapper"
+      ></app-generic-select>
+
+      <app-datepicker-form formControlName="apponintmentDate" class="input-wrapper"></app-datepicker-form>
+
+      <app-generic-select
+        *ngIf="getWorkingHours$ | async as getWorkingHours"
+        formControlName="apponintmentTime"
+        [options] = "getWorkingHours"
+        [placeholder] = "content.servicesTime.placeholder"
+        [errorMsg] = "content.servicesTime.errorMsg"
+        [searchControl] = "content.servicesTime.searchControl"
+        class="input-wrapper"
+      ></app-generic-select>
+
+      <input formControlName="servicePrice" type="text" placeholder="Price" readonly>
+     </div>
+
+      <div class="submit-wrapper">
+        <button type="submit" class="btn" [disabled]="!bookingForm.valid">{{ content.cta }}</button>
+      </div>
+  </form>
+</ng-container>

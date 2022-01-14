@@ -1,0 +1,29 @@
+/**
+ * Breakpoint mixins: use the breakpoints for predefined devices widths.
+ * USAGE: @include breakpoint-mg() (no arguments needed) -> Adds a rule for devices bigger than $mg-width
+ *
+ * @return
+ */
+ @mixin breakpoint-mg {
+  @media (min-width: #{$mg-width}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg {
+  @media (min-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  @media (min-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-sm {
+  @media (min-width: #{$sm-width}) {
+    @content;
+  }
+}

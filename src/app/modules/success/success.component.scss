@@ -1,0 +1,13 @@
+@import 'variables/_variables.scss';
+
+.success-page {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - $grid-gutter);
+  h2 {
+    margin-bottom: $grid-gutter;
+  }
+}

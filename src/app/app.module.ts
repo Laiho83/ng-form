@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeModule } from './modules/home/home.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api.service';
+import { TimeService } from './services/time.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +14,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HomeModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    TimeService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

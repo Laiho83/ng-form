@@ -1,0 +1,63 @@
+@import 'variables/_variables.scss';
+@import 'helpers/_breakpoints.scss';
+
+:host {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.home {
+  &-title_wrapper {
+    margin-bottom: $grid-gutter / 2;
+  }
+
+  &-description_wrapper {
+    margin-bottom: $grid-gutter * 2;
+  }
+
+  &-content_wrapper {
+    position: relative;
+    width: 100%;
+    max-width: $mg-width;
+  }
+}
+
+.content-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: $grid-gutter;
+  padding: $grid-gutter / 2;
+  border: 3px solid $heading-color;
+}
+
+.content-form {
+  width: 100%;
+  background-color: $quaternary-color;
+  padding: $grid-gutter;
+
+}
+
+// ----------------- //
+// -- BREAKPOINTS -- //
+// ----------------- //
+// 375PX
+@include breakpoint-mg {
+  .home-content_wrapper {
+    width: 1200px;
+  }
+
+  .content-img {
+    max-width: 900px;
+  }
+
+  .content-form {
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    max-width: 430px;
+    padding: $grid-gutter*2 $grid-gutter;
+  }
+}

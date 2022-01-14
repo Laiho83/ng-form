@@ -1,0 +1,92 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@typescript-eslint/member-ordering": "warn",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": "variable",
+            "modifiers": ["const"],
+            "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+          },
+          {
+            "selector": "parameter",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "parameterProperty",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "classProperty",
+            "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+          },
+          {
+            "selector": "classProperty",
+            "modifiers": ["private"],
+            "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "classMethod",
+            "modifiers": ["static"],
+            "format": ["camelCase", "PascalCase"]
+          },
+          {
+            "selector": "classMethod",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "objectLiteralProperty",
+            "format": ["camelCase", "UPPER_CASE"]
+          },
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE", "PascalCase"]
+          }
+        ],
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "eqeqeq": "off"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}

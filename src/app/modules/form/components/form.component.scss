@@ -1,0 +1,14 @@
+@import 'variables/_variables.scss';
+
+.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: $grid-gutter;
+}
+
+.form-title {
+  margin-bottom: $grid-gutter;
+  text-transform: uppercase;
+  color: $white-color;
+}
