@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WorkHours } from '../../../../backup/src/app/interfaces/api.interface';
+import { WorkHours } from '../interfaces/api.interface';
 
 @Injectable({
   providedIn: 'root',
