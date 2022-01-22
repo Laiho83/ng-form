@@ -18,7 +18,7 @@ export class FormComponent {
   public bookingForm: FormGroup;
   public getBarbers$: Observable<Barber>;
   public getServices$: Observable<Services>;
-  public getWorkingHours$: BehaviorSubject<any[]>;
+  public getWorkingHours$: BehaviorSubject<string[]>;
   public bookedAppointment: Booked = {
     startDate: 0,
     barberId: 0,
@@ -73,7 +73,7 @@ export class FormComponent {
   }
 
   getBarbers(): Observable<Barber> {
-    return this.api.getBarbers();
+    return this.api.getBarbers();    
   }
 
   getServices(): Observable<Services> {

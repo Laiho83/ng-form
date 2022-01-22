@@ -52,14 +52,14 @@ export class DatepickerFormComponent implements ControlValueAccessor, OnDestroy 
       .push(
         this.form.valueChanges
           .pipe(untilDestroyed(this))
-          .subscribe((value: any) => {
+          .subscribe((value: {[name: string]: string}) => {            
             this.onChange(value);
             this.onTouched();
           })
     );
   }
 
-  onChange: any = () => {};
+  onChange:  any = () => {};
   onTouched: any = () => {};
 
   registerOnChange(fn: any): void {

@@ -123,6 +123,7 @@
   },
   "defaultProject": "ng-form",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
   }
 }
